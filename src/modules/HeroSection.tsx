@@ -1,5 +1,5 @@
 
-import { Card, CardContent } from "@/components/ui/card"
+import {  CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -18,25 +18,24 @@ import img4 from '../../public/slider/img4.jpg'
 
 export function HeroSection() {
   return (
-   <div className="">
-  <Carousel className=""> 
+   <div className="mb-10 ">
+  <Carousel className="rounded-2xl"> 
     <CarouselContent>
       {images.map((image, index) => (
         <CarouselItem key={index}>
           <div className="p-1">
-            <Card>
+            <div>
               <CardContent className="p-0">
-           
-                <div className="relative h-[220px] md:h-[380px] lg:h-[480px] w-full">
+                <div className="relative h-[220px] md:h-[380px] lg:h-[600px] w-full">
                   <img
                     src={image}
                     alt={`Slide ${index + 1}`}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-[680px] object-cover rounded-lg"
                   />
                 
                 </div>
               </CardContent>
-            </Card>
+            </div>
           </div>
         </CarouselItem>
       ))}

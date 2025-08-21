@@ -1,20 +1,14 @@
-
 import { Outlet } from "react-router"
-import Navbar from "./layout/Navbar"
-import Footer from "./layout/Footer"
+import CommonLayout from "./layout/CommonLayout"
+
 
 function App() {
   return (
-    <div>
-      <div className="max-w-7xl mx-auto">
-       <Navbar/>
-  
-           <Outlet/>
-
+    <div className="max-w-7xl mx-auto">
+      <CommonLayout>
+      <Outlet/>
+    </CommonLayout>
     </div>
-    <Footer/>
-    </div>
-
   )
 }
 

@@ -1,10 +1,10 @@
-import { HeroSection } from "@/modules/HeroSection";
+
 
 const HomePage = () => {
     return (
-        <div>
+        <div className="h-screen">
             <h2> this is a home page </h2>
-            <HeroSection/>
+            {/* <HeroSection/> */}
         </div>
     );
 };
