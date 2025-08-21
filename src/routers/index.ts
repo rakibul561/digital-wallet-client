@@ -1,5 +1,6 @@
 import App from "@/App";
 import About from "@/pages/About";
+import HomePage from "@/pages/HomePage";
 import { createBrowserRouter } from "react-router";
 
  
@@ -10,9 +11,14 @@ import { createBrowserRouter } from "react-router";
      path: '/', 
      children: [
         {
+            Component: HomePage,
+            path: '/'
+        },
+        {
             Component: About,
             path: '/about'
-        }
+        },
+
      ]
    }
  ])
