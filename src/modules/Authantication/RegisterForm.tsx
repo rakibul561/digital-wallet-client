@@ -16,26 +16,47 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Component from "@/components/ui/Password";
+import { useRegisterMutation } from "@/redux/features/auth/auth.api";
+import { toast } from "sonner";
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  phone: z.string().min(10, {
-    message: "Phone must be at least 10 digits.",
-  }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters.",
-  }),
+  name: z
+    .string()
+    .min(3, "Name Must be in 3 characters")
+    .max(255, "Name can't be more that 255 characters"),
+  email: z.email({ error: "Invalid email" }),
+
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 8 characters long." })
+    .regex(/^(?=.*[A-Z])/, {
+      message: "Password must contain at least 1 uppercase letter.",
+    })
+    .regex(/^(?=.*[!@#$%^&*])/, {
+      message: "Password must contain at least 1 special character.",
+    })
+    .regex(/^(?=.*\d)/, {
+      message: "Password must contain at least 1 number.",
+    }),
+  phone: z
+    .string()
+    .regex(/^(?:\+8801\d{9}|01\d{9})$/, {
+      message:
+        "Phone number must be valid for Bangladesh. Format: +8801XXXXXXXXX or 01XXXXXXXXX",
+    })
+    .optional(),
+  address: z
+    .string()
+    .max(200, { message: "Address cannot exceed 200 characters." })
+    .optional(),
 });
 
 export function RegisterForm({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
+  const [register] = useRegisterMutation();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,8 +67,21 @@ export function RegisterForm({
     },
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      password: data.password,
+    };
+    try {
+      const res = await register(userInfo);
+      console.log(res);
+      toast.success("User Register Succesfullly");
+    } catch (error: any) {
+      console.log(error);
+      console.log(error.message);
+    }
   };
 
   return (
@@ -115,7 +149,7 @@ export function RegisterForm({
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                  <Component {...field}/>
+                    <Component {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

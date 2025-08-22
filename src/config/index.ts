@@ -1,7 +1,5 @@
- 
+const config = {
+  baseUrl: import.meta.env.VITE_BASE_URL
+}
 
-  const config = {
-   baseUrl : import.meta.env.BASE_URL
- }
-
- export default config;
+export default config;

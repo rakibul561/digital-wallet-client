@@ -1,7 +1,8 @@
  import config from "@/config"
 import axios from "axios"
   export const axiosInstance = axios.create({
-    baseURL: config.baseUrl
+    baseURL: config.baseUrl,
+    withCredentials:true,
   })
 
 
@@ -11,7 +12,7 @@ axiosInstance.interceptors.request.use(function (config) {
     // Do something before request is sent
     return config;
   }, function (error) {
-    // Do something with request error
+    // Do something with request error 
     return Promise.reject(error);
   },
 
