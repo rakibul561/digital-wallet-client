@@ -1,4 +1,5 @@
 import App from "@/App";
+import DashBoardLayout from "@/layout/DashboardLayout";
 import Login from "@/layout/Login";
 import Register from "@/layout/Register";
 import About from "@/pages/About";
@@ -7,7 +8,10 @@ import FAQPage from "@/pages/FAQPage";
 import FeaturesPage from "@/pages/FeaturesPage";
 import HomePage from "@/pages/HomePage";
 import PricingPage from "@/pages/PricingPage";
+import Unauthorized from "@/pages/Unauthrize";
 import { createBrowserRouter } from "react-router";
+import { adminSidebarItems } from "./adminSlidebar";
+import { generateRoutes } from "@/utlis/generateRoute";
 
  
 
@@ -40,10 +44,26 @@ import { createBrowserRouter } from "react-router";
             Component: PricingPage,
             path: '/pricing'
         },
+        {
+            Component: Unauthorized,
+            path: '/unauthorized'
+        },
 
      ]
      
    },
+     
+   { 
+    Component:DashBoardLayout,
+    path:'/admin',
+    children: [
+      ...generateRoutes(adminSidebarItems)
+    ]
+
+   } ,
+
+
+
    {
     Component: Register,
     path: '/register'
