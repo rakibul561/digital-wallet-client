@@ -52,7 +52,7 @@ export function LoginForm({
 
     };
    try {
-    const result = await login(userInfo);
+    const result = await login(userInfo).unwrap();
     console.log(result);
     toast.success("Login Succesfull")
     navigate('/')
@@ -61,6 +61,8 @@ export function LoginForm({
 
    } catch (error) {
      console.log(error)
+      toast.error( "Login Failed")
+
      
    }
   };

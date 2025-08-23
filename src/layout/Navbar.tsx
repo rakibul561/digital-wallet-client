@@ -1,33 +1,53 @@
-
-import Logo from "@/assets/icons/Logo"
-import { Button } from "@/components/ui/button"
+import Logo from "@/assets/icons/Logo";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Link } from "react-router"
-import { ModeToggle } from "./mode.toggle"
+} from "@/components/ui/popover";
+import { Link } from "react-router";
+import { ModeToggle } from "./mode.toggle";
+import {
+  authApi,
+  useLogoutMutation,
+  useUserInfoQuery,
+} from "@/redux/features/auth/auth.api";
+import { useAppDispatch } from "@/redux/hook";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/features", label: "Features" },
-    { href: "/pricing", label: "Pricing" },
-     { href: "/faq", label: "Faq" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/faq", label: "Faq" },
   { href: "/contact", label: "Contact" },
-
-
-]
+];
 
 export default function Navbar() {
+  const { data } = useUserInfoQuery(undefined);
+  console.log(data);
+  
+
+  const [logout] = useLogoutMutation();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = async () => {
+    try {
+      await logout(undefined).unwrap();
+     
+      dispatch(authApi.util.resetApiState());
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
   return (
     <header className="border-b px-4 md:px-6">
       <div className="flex h-16 items-center justify-between gap-4">
@@ -73,11 +93,7 @@ export default function Navbar() {
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
                   {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink
-                        href={link.href}
-                        className="py-1.5"
-                        
-                      >
+                      <NavigationMenuLink href={link.href} className="py-1.5">
                         {link.label}
                       </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -88,7 +104,7 @@ export default function Navbar() {
           </Popover>
           {/* Main nav */}
           <div className="flex items-center gap-6">
-            <Link to='/' className="text-primary hover:text-primary/90">
+            <Link to="/" className="text-primary hover:text-primary/90">
               <Logo />
             </Link>
             {/* Navigation menu */}
@@ -96,12 +112,8 @@ export default function Navbar() {
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
                   <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      
-                      href={link.href}
-                      className="text-muted-foreground hover:text-primary py-1.5 font-medium"
-                    >
-                      {link.label}
+                    <NavigationMenuLink className="text-muted-foreground hover:text-primary py-1.5 font-medium">
+                      <Link to={link.href}>{link.label} </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
@@ -111,13 +123,23 @@ export default function Navbar() {
         </div>
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <ModeToggle/>
-          <Button asChild variant="ghost" size="sm" className="text-sm">
-            <Link to='/login'>Sign In</Link>
-          </Button>
-         
+          <ModeToggle />
+          {data?.data?.data?.email && (
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              className="text-sm"
+            >
+              Logout
+            </Button>
+          )}
+          {!data?.data?.data?.email && (
+            <Button asChild className="text-sm">
+              <Link to="/login">Login</Link>
+            </Button>
+          )}
         </div>
       </div>
     </header>
-  )
+  );
 }
