@@ -1,5 +1,6 @@
 
 import AllTransaction from "@/pages/admin/AllTransaction";
+import AllUser from "@/pages/admin/AllUser";
 import type { ISidebar } from "@/types";
 import { lazy } from "react";
 
@@ -19,6 +20,17 @@ export const adminSidebarItems:ISidebar[] = [
       ]
     },
     {
+      title: "All Users",
+      items:[
+         {
+           title: "All Users",
+           url: "/admin/all-users",
+           component: AllUser
+        },
+      ]
+    }, 
+    
+    {
       title: "Transaction",
       items:[
          {
@@ -26,9 +38,6 @@ export const adminSidebarItems:ISidebar[] = [
            url: "/admin/transaction",
            component: AllTransaction
         },
-        
-        
-       
       ]
     }, 
     
