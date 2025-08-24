@@ -1,4 +1,5 @@
 
+import AllTransaction from "@/pages/admin/AllTransaction";
 import type { ISidebar } from "@/types";
 import { lazy } from "react";
 
@@ -18,13 +19,13 @@ export const adminSidebarItems:ISidebar[] = [
       ]
     },
     {
-      title: "Tour Managment",
+      title: "Transaction",
       items:[
-        //  {
-        //    title: "Add TourType",
-        //    url: "/admin/add-tour-types",
-        //    component: AddTourType
-        // },
+         {
+           title: "All Transaction",
+           url: "/admin/transaction",
+           component: AllTransaction
+        },
         
         
        

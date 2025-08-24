@@ -1,16 +1,16 @@
 
-import UserView from "@/pages/user/UserView";
+import AgentOverview from "@/pages/agent/AgentOverview";
 import type { ISidebar } from "@/types";
 
 
 export const agentSidebarItems:ISidebar[] = [
     {
-      title: "History",
+      title: "Dashboard",
       items:[
         {
-           title: "Booking",
-           url: "/user/bookings",
-           component: UserView
+           title: "Overview",
+           url: "/agent/overview",
+           component: AgentOverview
         }
       ]
     },

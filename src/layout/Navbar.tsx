@@ -19,19 +19,27 @@ import {
   useUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
 import { useAppDispatch } from "@/redux/hook";
+import { role } from "@/constant/role";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/features", label: "Features" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/faq", label: "Faq" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Home", role:"PUBLIC" },
+  { href: "/about", label: "About", role:"PUBLIC" },
+  { href: "/features", label: "Features", role:"PUBLIC" },
+  { href: "/pricing", label: "Pricing", role:"PUBLIC"},
+  { href: "/faq", label: "Faq", role:"PUBLIC" },
+  { href: "/contact", label: "Contact", role:"PUBLIC"},
+  { href: "/admin", label: "Dashboard", role: role.admin },
+  { href: "/user", label: "Dashboard", role: role.user },
+  { href: "/agent", label: "Dashboard", role: role.agent },
+  
 ];
 
 export default function Navbar() {
   const { data } = useUserInfoQuery(undefined);
+
+  console.log(data);
+  
 
   
 
@@ -111,11 +119,22 @@ export default function Navbar() {
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
+                  <>
+                   {
+                    link.role === "PUBLIC" && ( <NavigationMenuItem key={index}>
                     <NavigationMenuLink className="text-muted-foreground hover:text-primary py-1.5 font-medium">
                       <Link to={link.href}>{link.label} </Link>
                     </NavigationMenuLink>
-                  </NavigationMenuItem>
+                  </NavigationMenuItem>)
+                   }
+                   {
+                    link.role === data?.data?.data?.role && ( <NavigationMenuItem key={index}>
+                    <NavigationMenuLink className="text-muted-foreground hover:text-primary py-1.5 font-medium">
+                      <Link to={link.href}>{link.label} </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>)
+                   }
+                  </>
                 ))}
               </NavigationMenuList>
             </NavigationMenu>

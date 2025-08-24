@@ -18,6 +18,8 @@ import { z } from "zod";
 import Component from "@/components/ui/Password";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 
 const formSchema = z.object({
   name: z
@@ -49,6 +51,7 @@ const formSchema = z.object({
     .string()
     .max(200, { message: "Address cannot exceed 200 characters." })
     .optional(),
+  role: z.string().optional(),
 });
 
 export function RegisterForm({
@@ -66,6 +69,7 @@ export function RegisterForm({
       email: "",
       phone: "",
       password: "",
+      role: "USER",
     },
   });
 
@@ -75,12 +79,13 @@ export function RegisterForm({
       email: data.email,
       phone: data.phone,
       password: data.password,
+      role: data.role,
     };
     try {
-      const res = await register(userInfo);
+      const res = await register(userInfo).unwrap();
       console.log(res);
       toast.success("User Register Succesfullly");
-      navigate('/login')
+      navigate("/login");
     } catch (error: any) {
       console.log(error);
       console.log(error.message);
@@ -144,6 +149,35 @@ export function RegisterForm({
                 </FormItem>
               )}
             />
+
+         
+
+<FormField
+  control={form.control}
+  name="role"
+  render={({ field }) => (
+    <FormItem className="w-full">
+      <FormLabel>Role</FormLabel>
+      <Select 
+        onValueChange={field.onChange}
+        value={field.value} 
+      >
+        <FormControl>
+          <SelectTrigger className="w-full">   
+            <SelectValue placeholder="Select a role" />
+          </SelectTrigger>
+        </FormControl>
+        <SelectContent>
+          <SelectItem value="USER">USER</SelectItem>
+          <SelectItem value="AGENT">AGENT</SelectItem>
+          <SelectItem value="ADMIN">ADMIN</SelectItem>
+        </SelectContent>
+      </Select>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
 
             <FormField
               control={form.control}

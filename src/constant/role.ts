@@ -1,6 +1,5 @@
 export const role = {
-    agent : "AGENT  ",
-    admin : "ADMIN",
-    user : "USER"
-
-}
+    agent: "AGENT",
+    admin: "ADMIN",
+    user: "USER"
+};

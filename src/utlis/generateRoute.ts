@@ -1,7 +1,6 @@
 import type { ISidebar } from "@/types";
 
 
- 
 
 
  export const generateRoutes = (sidebarItems:ISidebar[]) =>{
