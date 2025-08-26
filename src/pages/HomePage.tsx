@@ -1,10 +1,12 @@
 import { HeroSection } from "@/modules/HeroSection";
+import { FAQPage } from "./FAQPage";
 
 const HomePage = () => {
     return (
-        <div className="h-screen">
+        <div>
             
             <HeroSection/>
+            <FAQPage/>
         </div>
     );
 };

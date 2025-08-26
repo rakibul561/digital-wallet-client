@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 
 export interface FaqItem {
   question: string;
@@ -34,8 +35,8 @@ const defaultFaqs: FaqItem[] = [
   },
 ];
 
- export const FAQPage = ({
- 
+const Faq5 = ({
+  badge = "FAQ",
   heading = "Common Questions & Answers",
   description = "Find out all the essential details about our platform and how it can serve your needs.",
   faqs = defaultFaqs,
@@ -44,7 +45,7 @@ const defaultFaqs: FaqItem[] = [
     <section className="py-32">
       <div className="container">
         <div className="text-center">
-          {/* <Badge className="text-xs font-medium">{badge}</Badge> */}
+          <Badge className="text-xs font-medium">{badge}</Badge>
           <h1 className="mt-4 text-4xl font-semibold">{heading}</h1>
           <p className="mt-6 font-medium text-muted-foreground">
             {description}
@@ -70,4 +71,4 @@ const defaultFaqs: FaqItem[] = [
   );
 };
 
-
+export { Faq5 };

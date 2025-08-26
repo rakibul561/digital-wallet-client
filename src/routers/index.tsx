@@ -4,7 +4,6 @@ import Login from "@/layout/Login";
 import Register from "@/layout/Register";
 import About from "@/pages/About";
 import ContactPage from "@/pages/ContactPage";
-import FAQPage from "@/pages/FAQPage";
 import FeaturesPage from "@/pages/FeaturesPage";
 import HomePage from "@/pages/HomePage";
 import PricingPage from "@/pages/PricingPage";
@@ -17,6 +16,7 @@ import { userSidebarItems } from "./userSlidebar";
 import { withAuth } from "@/utlis/withAuth";
 import { role } from "@/constant/role";
 import type { TRole } from "@/types";
+import { FAQPage } from "@/pages/FAQPage";
 
  
 
