@@ -22,7 +22,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const {data:userData} = useUserInfoQuery(undefined)
   console.log(userData);
   
-const role = userData?.data?.data?.role ?? "No role found";
+const role = userData?.data?.role ?? "No role found";
 
 console.log("Role:", role);
 

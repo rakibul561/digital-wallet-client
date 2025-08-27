@@ -82,7 +82,7 @@ import { FAQPage } from "@/pages/FAQPage";
     Component:withAuth(DashBoardLayout, role.user as TRole),
     path:'/user',
     children: [
-      {index:true , element:<Navigate to="/user/bookings" />},
+      {index:true , element:<Navigate to="/user/wallets/balance" />},
       ...generateRoutes(userSidebarItems)
     ]
    } ,

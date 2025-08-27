@@ -12,8 +12,8 @@ export const userSidebarItems:ISidebar[] = [
     title: "History",
     items:[
       {
-         title: "Booking",
-         url: "/user/bookings",
+         title: "Wallets",
+         url: "/user/wallets/balance",
          component: UserView
       }
     ]

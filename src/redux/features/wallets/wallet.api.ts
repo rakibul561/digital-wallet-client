@@ -1,18 +1,14 @@
 import { baseApi } from "@/redux/base.api";
 
- 
- 
- const walletApi = baseApi.injectEndpoints({
-    endpoints: (builder) => ({
-       wallet: builder.query({
-        query: (id:string) => ({
-            url: "/me/register",
-            method: `/me/${id}`,
-            
-        })
-       }),
-    })
- })
+const walletApi = baseApi.injectEndpoints({
+  endpoints: (builder) => ({
+    wallet: builder.query({
+      query: (walletId: string) => ({
+        url: `/wallets/me/${walletId}`,  
+        method: "GET",
+      }),
+    }),
+  }),
+});
 
-
- export const {useWalletQuery} = walletApi
+export const { useWalletQuery } = walletApi;
