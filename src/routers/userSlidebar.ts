@@ -1,7 +1,7 @@
 
 import AddMoney from "@/pages/user/AddMoney";
 import SendMoney from "@/pages/user/SendMoney";
-import UserView from "@/pages/user/UserView";
+import UserView from "@/pages/user/Wallet";
 import Withdraw from "@/pages/user/Withdraw";
 import type { ISidebar } from "@/types";
 
