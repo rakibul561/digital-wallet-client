@@ -26,6 +26,14 @@ import { baseApi } from "@/redux/base.api";
         invalidatesTags: ["USER"]
        }),
        
+       userData: builder.query({
+        query: () => ({
+            url: "/user",
+            method: 'GET',
+            
+        }),
+          providesTags: ["USER"]
+       }),
        userInfo: builder.query({
         query: () => ({
             url: "/user/me",
@@ -38,4 +46,4 @@ import { baseApi } from "@/redux/base.api";
  })
 
 
- export const {useRegisterMutation, useLoginMutation, useLogoutMutation,useUserInfoQuery} = authApi
+ export const {useRegisterMutation, useLoginMutation, useLogoutMutation,useUserInfoQuery, useUserDataQuery} = authApi
