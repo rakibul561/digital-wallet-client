@@ -8,7 +8,13 @@ const walletApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    withdraw: builder.mutation({
+      query: () => ({
+        url: "/transactions/withdraw",  
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useWalletQuery } = walletApi;
+export const { useWalletQuery, useWithdrawMutation } = walletApi;
