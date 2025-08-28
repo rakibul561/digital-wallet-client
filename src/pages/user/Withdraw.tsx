@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -9,8 +10,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
-import { useWalletQuery } from "@/redux/features/wallets/wallet.api";
+import { useWalletQuery, useWithdrawMutation } from "@/redux/features/wallets/wallet.api";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
 
 type WithdrawFormValues = {
   amount: string;
@@ -19,11 +21,16 @@ type WithdrawFormValues = {
 const Withdraw = () => {
   const { data: userInfo } = useUserInfoQuery(undefined);
   const walletId = userInfo?.data?.walletId;
-  console.log(walletId);
+  
+
+  
+
+  const [wallets] = useWithdrawMutation()
 
   const { data: walletData, isLoading, isError } = useWalletQuery(walletId!, {
     skip: !walletId,
   });
+
 
   const form = useForm<WithdrawFormValues>({
     defaultValues: {
@@ -31,8 +38,17 @@ const Withdraw = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<WithdrawFormValues> = (data) => {
-    console.log("Withdraw data:", data);
+  const onSubmit: SubmitHandler<WithdrawFormValues> = async (data) => {
+   
+    console.log(data)
+    try {
+      const res = await wallets({
+        amount:(data.amount)
+      }).unwrap();
+      toast.success("Withdraw succesfully")
+    } catch (error) {
+      console.log(error)
+    }
   };
    
 
