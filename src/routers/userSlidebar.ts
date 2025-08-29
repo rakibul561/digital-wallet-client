@@ -1,5 +1,6 @@
 
 import AddMoney from "@/pages/user/AddMoney";
+import History from "@/pages/user/History";
 import SendMoney from "@/pages/user/SendMoney";
 import UserView from "@/pages/user/Wallet";
 import Withdraw from "@/pages/user/Withdraw";
@@ -9,7 +10,7 @@ import type { ISidebar } from "@/types";
 export const userSidebarItems:ISidebar[] = [
   
   {
-    title: "History",
+    title: "Acount",
     items:[
       {
          title: "Wallets",
@@ -45,6 +46,16 @@ export const userSidebarItems:ISidebar[] = [
          title: "Withdraw",
          url: "/user/withdraw",
          component: Withdraw
+      }
+    ]
+  },
+  {
+    title: " History",
+    items:[
+      {
+         title: "Transaction History",
+         url: "/user/tran-history",
+         component: History
       }
     ]
   },
