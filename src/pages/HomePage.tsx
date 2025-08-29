@@ -1,5 +1,6 @@
 import { HeroSection } from "@/modules/HeroSection";
 import { FAQPage } from "./FAQPage";
+import ContactPage from "./ContactPage";
 
 const HomePage = () => {
     return (
@@ -7,6 +8,7 @@ const HomePage = () => {
             
             <HeroSection/>
             <FAQPage/>
+            <ContactPage/>
         </div>
     );
 };

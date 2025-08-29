@@ -1,5 +1,5 @@
 
-import AgentOverview from "@/pages/agent/AgentOverview";
+import AgentHistory from "@/pages/agent/AgentOverview";
 import CashIn from "@/pages/agent/CashIn";
 import CashOut from "@/pages/agent/CashOut";
 import type { ISidebar } from "@/types";
@@ -10,9 +10,9 @@ export const agentSidebarItems:ISidebar[] = [
       title: "Dashboard",
       items:[
         {
-           title: "Overview",
-           url: "/agent/overview",
-           component: AgentOverview
+           title: "history",
+           url: "/agent/history",
+           component: AgentHistory
         }
       ]
     },

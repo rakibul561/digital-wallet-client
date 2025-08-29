@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import Logo from "@/assets/icons/Logo";
+import img from "@/assets/image/bg.jpg"
 
 export const HeroSection = () => {
   return (
@@ -9,7 +10,7 @@ export const HeroSection = () => {
       <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
         <img
           alt="background"
-          src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/square-alt-grid.svg"
+          src={img}
           className="[mask-image:radial-gradient(75%_75%_at_center,white,transparent)] opacity-90"
         />
       </div>

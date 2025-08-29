@@ -13,38 +13,41 @@ export interface Faq5Props {
 
 const defaultFaqs: FaqItem[] = [
   {
-    question: "What is a FAQ and why is it important?",
+    question: "What is a Digital Wallet?",
     answer:
-      "FAQ stands for Frequently Asked Questions. It is a list that provides answers to common questions people may have about a specific product, service, or topic.",
+      "A Digital Wallet is an electronic application that allows you to store, send, and receive money securely using your phone or computer.",
   },
   {
-    question: "Why should I use a FAQ on my website or app?",
+    question: "How do I deposit money into my wallet?",
     answer:
-      "Utilizing a FAQ section on your website or app is a practical way to offer instant assistance to your users or customers. Instead of waiting for customer support responses, they can find quick answers to commonly asked questions. ",
+      "You can deposit money via agents (cash-in), bank transfer, or other supported payment methods. Once deposited, the balance is instantly available in your wallet.",
   },
   {
-    question: "How do I effectively create a FAQ section?",
+    question: "How can I send money to another user?",
     answer:
-      "Creating a FAQ section starts with gathering the most frequent questions you receive from your users or customers. Once you have a list, you need to write clear, detailed, and helpful answers to each question.",
+      "Simply enter the recipient's phone number or registered email, specify the amount, and confirm the transaction. The money will be transferred instantly.",
   },
   {
-    question: "What are the benefits of having a well-maintained FAQ section?",
+    question: "Is my money safe in the wallet?",
     answer:
-      "There are numerous advantages to maintaining a robust FAQ section. Firstly, it provides immediate answers to common queries, which improves the user experience.",
+      "Yes, your wallet uses advanced encryption, secure authentication, and transaction monitoring to ensure your money is safe at all times.",
+  },
+  {
+    question: "Can I track my transaction history?",
+    answer:
+      "Absolutely! You can view all your deposits, withdrawals, and money transfers in the transaction history section with filters for date and type.",
   },
 ];
 
- export const FAQPage = ({
- 
-  heading = "Common Questions & Answers",
-  description = "Find out all the essential details about our platform and how it can serve your needs.",
+export const FAQPage = ({
+  heading = "Frequently Asked Questions",
+  description = "Find answers to common questions about our Digital Wallet platform.",
   faqs = defaultFaqs,
 }: Faq5Props) => {
   return (
     <section className="py-32">
       <div className="container">
         <div className="text-center">
-          {/* <Badge className="text-xs font-medium">{badge}</Badge> */}
           <h1 className="mt-4 text-4xl font-semibold">{heading}</h1>
           <p className="mt-6 font-medium text-muted-foreground">
             {description}
@@ -53,7 +56,7 @@ const defaultFaqs: FaqItem[] = [
         <div className="mx-auto mt-14 max-w-xl">
           {faqs.map((faq, index) => (
             <div key={index} className="mb-8 flex gap-4">
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-sm bg-secondary font-mono text-xs text-primary">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-secondary font-mono text-xs text-primary">
                 {index + 1}
               </span>
               <div>
@@ -69,5 +72,6 @@ const defaultFaqs: FaqItem[] = [
     </section>
   );
 };
+
 
 

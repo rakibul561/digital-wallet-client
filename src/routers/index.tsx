@@ -2,7 +2,7 @@ import App from "@/App";
 import DashBoardLayout from "@/layout/DashboardLayout";
 import Login from "@/layout/Login";
 import Register from "@/layout/Register";
-import About from "@/pages/About";
+import About from "@/pages/about/About";
 import ContactPage from "@/pages/ContactPage";
 import FeaturesPage from "@/pages/FeaturesPage";
 import HomePage from "@/pages/HomePage";
@@ -73,7 +73,7 @@ import { FAQPage } from "@/pages/FAQPage";
     Component:withAuth(DashBoardLayout, role.agent as TRole),
     path:'/agent',
     children: [
-       {index:true , element:<Navigate to="/agent/overview" />},
+       {index:true , element:<Navigate to="/agent/history" />},
       ...generateRoutes(agentSidebarItems)
     ]
 

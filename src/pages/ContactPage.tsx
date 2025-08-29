@@ -7,7 +7,7 @@ const ContactPage = () => {
           "url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')",
       }}
     >
-      <div className="flex flex-col min-h-screen bg-black/60">
+      <div className="flex flex-col min-h-screen mb-10 bg-black/60">
         <div className="container flex flex-col flex-1 px-6 py-12 mx-auto">
           <div className="flex-1 lg:flex lg:items-center lg:-mx-6">
             {/* Left side content */}
