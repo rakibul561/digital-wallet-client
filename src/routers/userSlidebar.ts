@@ -1,5 +1,4 @@
 
-import AddMoney from "@/pages/user/AddMoney";
 import History from "@/pages/user/History";
 import SendMoney from "@/pages/user/SendMoney";
 import UserView from "@/pages/user/Wallet";
@@ -19,16 +18,7 @@ export const userSidebarItems:ISidebar[] = [
       }
     ]
   },
-  {
-    title: "ADD Money",
-    items:[
-      {
-         title: "ADD Money",
-         url: "/user/add-money",
-         component: AddMoney
-      }
-    ]
-  },
+  
   {
     title: "Send Money",
     items:[

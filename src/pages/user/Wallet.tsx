@@ -1,5 +1,6 @@
 import { useWalletQuery } from "@/redux/features/wallets/wallet.api";
 import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { Link } from "react-router";
 
 const Wallet = () => {
   const { data: userInfo } = useUserInfoQuery(undefined);
@@ -63,14 +64,17 @@ const Wallet = () => {
 
       {/* Actions */}
       <div className="mt-6 flex gap-3">
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700">
-          + Add Money
-        </button>
+        
         <button className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700">
+          <Link to="/user/send-money">
           Send Money
+          </Link>
         </button>
         <button className="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-900">
-          Transaction History
+           <Link to="/user/tran-history">
+           Transaction History
+          </Link>
+         
         </button>
       </div>
     </div>

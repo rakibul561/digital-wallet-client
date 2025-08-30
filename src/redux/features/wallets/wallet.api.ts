@@ -9,9 +9,10 @@ const walletApi = baseApi.injectEndpoints({
       }),
     }),
     history: builder.query({
-      query: () => ({
+      query: (params) => ({
         url: "/transactions/me",  
         method: "GET",
+        params
       }),
     }),
     allTransaction: builder.query({

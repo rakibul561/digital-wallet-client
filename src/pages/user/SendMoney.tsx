@@ -22,7 +22,7 @@ interface ISEND {
 
 const SendMoney = () => {
   const { data: userData } = useUserDataQuery(undefined);
-
+  console.log(userData)
   const [sendMoney] = useSendMoneyMutation();
 
   const userOptions =
@@ -30,6 +30,8 @@ const SendMoney = () => {
       value: user._id,
       label: user.name,
     })) || [];
+
+
 
   const form = useForm<ISEND>({
     defaultValues: {
@@ -78,7 +80,6 @@ const SendMoney = () => {
             )}
           />
 
-          {/* Receiver Field */}
           <FormField
             control={form.control}
             name="receiverId"
@@ -92,7 +93,7 @@ const SendMoney = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {userOptions.map(user => (
+                    {userOptions.map((user:any)=> (
                       <SelectItem key={user.value} value={user.value}>
                         {user.label}
                       </SelectItem>
