@@ -1,14 +1,73 @@
 import { useUserDataQuery } from "@/redux/features/auth/auth.api";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
 
 const AllUser = () => {
    
     const {data} = useUserDataQuery(undefined);
     console.log(data)
 
+
+    const users = data?.data?.data;
+    console.log(users)
+
     return (
-        <div>
-            <h2> all user page </h2>
-        </div>
+         <div className="p-4 lg:mx-20">
+      <Table>
+        
+        <TableHeader>
+          <TableRow>
+            <TableHead>Date</TableHead>
+            <TableHead>Type</TableHead>
+            <TableHead>User</TableHead>
+            <TableHead>Wallet</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {users?.length > 0 ? (
+            users.map((tx: any) => (
+              <TableRow key={tx._id}>
+                <TableCell>
+                  {new Date(tx.createdAt).toLocaleString()}
+                </TableCell>
+                <TableCell>
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      tx.type === "CASH_IN"
+                        ? "text-red-700"
+                        : " text-red-700"
+                    }`}
+                  >
+                    {tx.type}
+                  </span>
+                </TableCell>
+                <TableCell>{tx.userId}</TableCell>
+                <TableCell>{tx.walletId}</TableCell>
+                <TableCell className="text-right font-bold">
+                  ${tx.amount}
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={5} className="text-center text-gray-500 py-4">
+                No transactions found
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </div>
     );
 };
 

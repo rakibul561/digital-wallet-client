@@ -29,6 +29,7 @@ const walletApi = baseApi.injectEndpoints({
       }),
       invalidatesTags:["WALLET"]
     }),
+
     withdraw: builder.mutation({
       query: (userInfo) => ({
         url: "/transactions/withdraw",  
@@ -37,6 +38,7 @@ const walletApi = baseApi.injectEndpoints({
       }),
       invalidatesTags:["WALLET"]
     }),
+
     cashIn: builder.mutation({
       query: (userInfo) => ({
         url: "transactions/cash-in",  
@@ -45,6 +47,7 @@ const walletApi = baseApi.injectEndpoints({
       }),
       invalidatesTags:["WALLET"]
     }),
+
     cashOut: builder.mutation({
       query: (userInfo) => ({
         url: "transactions/cash-out",  
@@ -53,8 +56,16 @@ const walletApi = baseApi.injectEndpoints({
       }),
       invalidatesTags:["WALLET"]
     }),
+    updateWallet: builder.mutation({
+       query: ({ walletId, status }) => ({
+        url: `/wallets/block/${walletId}`,
+        method: "PATCH",
+        body: { status },
+      }),
+      invalidatesTags:["WALLET"]
+    }),
   }),
 
 });
 
-export const { useWalletQuery, useWithdrawMutation,useSendMoneyMutation,useHistoryQuery,useCashInMutation,useCashOutMutation, useAllTransactionQuery} = walletApi;
+export const { useWalletQuery, useWithdrawMutation,useSendMoneyMutation,useHistoryQuery,useCashInMutation,useCashOutMutation, useAllTransactionQuery,useUpdateWalletMutation} = walletApi;

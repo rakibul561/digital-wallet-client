@@ -1,11 +1,10 @@
 
-
 const Analytices = () => {
-    return (
-        <div>
-            <h2> the analytics page</h2>
-        </div>
-    );
+  return (
+    <div>
+      <h2>hello</h2>
+    </div>
+  );
 };
 
 export default Analytices;
