@@ -19,7 +19,7 @@ const AllTransaction = () => {
   const transactions = data?.data || [];
 
   return (
-    <div className="p-4 lg:mx-20">
+    <div className="p-4 border ">
       <Table>
         <TableHeader>
           <TableRow>

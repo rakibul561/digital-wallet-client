@@ -1,6 +1,6 @@
-import { useUserDataQuery } from "@/redux/features/auth/auth.api";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+import { useUserDataQuery } from "@/redux/features/auth/auth.api";
 import {
   Table,
   TableBody,
@@ -9,66 +9,83 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
+import { Button } from "@/components/ui/button";
+import { useUpdateWalletMutation } from "@/redux/features/wallets/wallet.api";
 
 const AllUser = () => {
-   
-    const {data} = useUserDataQuery(undefined);
-    console.log(data)
+  const { data } = useUserDataQuery(undefined);
+  const [updateWalletStatus, { isLoading }] = useUpdateWalletMutation();
+  console.log(updateWalletStatus)
 
+  const users = data?.data?.data || [];
 
-    const users = data?.data?.data;
-    console.log(users)
+  const handleToggleStatus = async (id: string, currentStatus: string) => {
+    try {
+      const newStatus = currentStatus === "ACTIVE" ? "BLOCKED" : "ACTIVE";
 
-    return (
-         <div className="p-4 lg:mx-20">
+      await updateWalletStatus({ walletId: id, status: newStatus }).unwrap();
+
+      console.log(`User ${id} status updated to ${newStatus}`);
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  return (
+    <div className="p-4 lg:mx-20 border">
       <Table>
-        
         <TableHeader>
           <TableRow>
-            <TableHead>Date</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead>User</TableHead>
-            <TableHead>Wallet</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Phone</TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {users?.length > 0 ? (
-            users.map((tx: any) => (
-              <TableRow key={tx._id}>
-                <TableCell>
-                  {new Date(tx.createdAt).toLocaleString()}
-                </TableCell>
+          {users.length > 0 ? (
+            users.map((user: any) => (
+              <TableRow key={user._id}>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.phone}</TableCell>
+                <TableCell>{user.role}</TableCell>
                 <TableCell>
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      tx.type === "CASH_IN"
-                        ? "text-red-700"
-                        : " text-red-700"
+                      user.status === "ACTIVE"
+                        ? "text-green-600 bg-green-100"
+                        : "text-red-600 bg-red-100"
                     }`}
                   >
-                    {tx.type}
+                    {user.status}
                   </span>
                 </TableCell>
-                <TableCell>{tx.userId}</TableCell>
-                <TableCell>{tx.walletId}</TableCell>
-                <TableCell className="text-right font-bold">
-                  ${tx.amount}
+                <TableCell className="text-right">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={isLoading}
+                    onClick={() => handleToggleStatus(user._id, user.status)}
+                  >
+                    {user.status === "ACTIVE" ? "Block" : "Activate"}
+                  </Button>
                 </TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={5} className="text-center text-gray-500 py-4">
-                No transactions found
+              <TableCell colSpan={6} className="text-center text-gray-500 py-4">
+                No users found
               </TableCell>
             </TableRow>
           )}
         </TableBody>
       </Table>
     </div>
-    );
+  );
 };
 
 export default AllUser;
