@@ -20,6 +20,7 @@ import {
 } from "@/redux/features/auth/auth.api";
 import { useAppDispatch } from "@/redux/hook";
 import { role } from "@/constant/role";
+import { toast } from "sonner";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -50,6 +51,7 @@ export default function Navbar() {
       await logout(undefined).unwrap();
      
       dispatch(authApi.util.resetApiState());
+      toast.success("Logout succesfull")
     } catch (error) {
       console.error("Logout error:", error);
     }

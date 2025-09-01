@@ -18,8 +18,13 @@ import { z } from "zod";
 import Component from "@/components/ui/Password";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   name: z
@@ -40,6 +45,10 @@ const formSchema = z.object({
     .regex(/^(?=.*\d)/, {
       message: "Password must contain at least 1 number.",
     }),
+  image: z 
+  .string()
+   .optional(),
+
   phone: z
     .string()
     .regex(/^(?:\+8801\d{9}|01\d{9})$/, {
@@ -67,6 +76,7 @@ export function RegisterForm({
     defaultValues: {
       name: "",
       email: "",
+      image: "https://i.ibb.co.com/4RcS7TwZ/smiling-young-man-illustration-1308-174669.jpg",
       phone: "",
       password: "",
       role: "USER",
@@ -77,10 +87,14 @@ export function RegisterForm({
     const userInfo = {
       name: data.name,
       email: data.email,
+      image:data.image,
       phone: data.phone,
       password: data.password,
       role: data.role,
     };
+
+
+
     try {
       const res = await register(userInfo).unwrap();
       console.log(res);
@@ -136,6 +150,23 @@ export function RegisterForm({
               )}
             />
 
+           
+
+
+            <FormField
+              control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Image</FormLabel>
+                  <FormControl>
+                    <Input type="tel" placeholder="Image Url" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="phone"
@@ -150,34 +181,28 @@ export function RegisterForm({
               )}
             />
 
-         
-
-<FormField
-  control={form.control}
-  name="role"
-  render={({ field }) => (
-    <FormItem className="w-full">
-      <FormLabel>Role</FormLabel>
-      <Select 
-        onValueChange={field.onChange}
-        value={field.value} 
-      >
-        <FormControl>
-          <SelectTrigger className="w-full">   
-            <SelectValue placeholder="Select a role" />
-          </SelectTrigger>
-        </FormControl>
-        <SelectContent>
-          <SelectItem value="USER">USER</SelectItem>
-          <SelectItem value="AGENT">AGENT</SelectItem>
-          <SelectItem value="ADMIN">ADMIN</SelectItem>
-        </SelectContent>
-      </Select>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
-
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel>Role</FormLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select a role" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="USER">USER</SelectItem>
+                      <SelectItem value="AGENT">AGENT</SelectItem>
+                      <SelectItem value="ADMIN">ADMIN</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}

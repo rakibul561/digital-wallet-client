@@ -1,4 +1,5 @@
 
+import Profile from "@/pages/shared/Profile";
 import History from "@/pages/user/History";
 import SendMoney from "@/pages/user/SendMoney";
 import UserView from "@/pages/user/Wallet";
@@ -9,7 +10,17 @@ import type { ISidebar } from "@/types";
 export const userSidebarItems:ISidebar[] = [
   
   {
-    title: "Acount",
+    title: "Managment",
+    items:[
+      {
+         title: "Profile",
+         url: "/user/profile",
+         component: Profile
+      }
+    ]
+  },
+  {
+    title: "Account",
     items:[
       {
          title: "Wallets",

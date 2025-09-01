@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const AllUser = () => {
   const { data } = useUserDataQuery(undefined);
@@ -18,13 +19,14 @@ const AllUser = () => {
 const handleToggleStatus = async (id: string, currentStatus: string) => {
   try {
     const newStatus = currentStatus === "ACTIVE" ? "BLOCKED" : "ACTIVE";
-    console.log("sending:", newStatus);
+  
 
     await updateUserStatus({ userId: id, status: newStatus }).unwrap();
+    toast.success("User Staus Updated")
 
     console.log(`✅ User ${id} status updated to ${newStatus}`);
   } catch (error) {
-    console.error("❌ Error updating status:", error);
+    console.error(" Error updating status:", error);
   }
 };
 

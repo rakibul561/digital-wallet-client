@@ -1,6 +1,7 @@
 
 import AllTransaction from "@/pages/admin/AllTransaction";
 import AllUser from "@/pages/admin/AllUser";
+import Profile from "@/pages/shared/Profile";
 import type { ISidebar } from "@/types";
 import { lazy } from "react";
 
@@ -9,6 +10,16 @@ import { lazy } from "react";
 const  Analytices = lazy(()=> import ("@/pages/admin/Analytices"))
 
 export const adminSidebarItems:ISidebar[] = [
+    {
+      title: "Profile",
+      items:[
+        {
+           title: "Profile",
+           url: "/admin/profile",
+           component: Profile
+        }
+      ]
+    },
     {
       title: "Dashboard",
       items:[

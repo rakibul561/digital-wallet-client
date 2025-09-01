@@ -20,7 +20,7 @@ const AgentHistory = () => {
   }
 
   return (
-    <div className="p-4 lg:mx-20">
+    <div className="p-4 lg:mx-20  border-4  ">
       <Table>
         
         <TableHeader>
