@@ -15,18 +15,19 @@ const AllUser = () => {
   const [updateUserStatus, { isLoading }] = useUpdateUserStatusMutation();
 
   const users = data?.data?.data || [];
+const handleToggleStatus = async (id: string, currentStatus: string) => {
+  try {
+    const newStatus = currentStatus === "ACTIVE" ? "BLOCKED" : "ACTIVE";
+    console.log("sending:", newStatus);
 
-  const handleToggleStatus = async (id: string, currentStatus: string) => {
-    try {
-      const newStatus = currentStatus === "ACTIVE" ? "BLOCKED" : "ACTIVE";
+    await updateUserStatus({ userId: id, status: newStatus }).unwrap();
 
-      await updateUserStatus({ userId: id, status: newStatus }).unwrap();
+    console.log(`✅ User ${id} status updated to ${newStatus}`);
+  } catch (error) {
+    console.error("❌ Error updating status:", error);
+  }
+};
 
-      console.log(`User ${id} status updated to ${newStatus}`);
-    } catch (error) {
-      console.error("Error updating status:", error);
-    }
-  };
 
   return (
     <div className="p-4 lg:mx-20 border">

@@ -44,15 +44,15 @@ import { baseApi } from "@/redux/base.api";
           providesTags: ["USER"]
        }),
 
-       updateUserStatus: builder.mutation<any, { userId: string; status: string }>({
-             query: ({ userId, status }) => ({
-               url: `/user/${userId}/status`,
-               method: "PATCH",
-               body: { status },
-             }),
-             invalidatesTags: ["USER"],
-           }),
-       
+      updateUserStatus: builder.mutation({
+  query: ({ userId, status }) => ({
+    url: `/user/${userId}/status`,   
+    method: "PATCH",
+    body: { status },             
+  }),
+  invalidatesTags: ["USER"],
+}),
+
 
 
 
