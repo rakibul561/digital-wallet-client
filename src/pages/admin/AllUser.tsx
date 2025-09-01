@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useUserDataQuery } from "@/redux/features/auth/auth.api";
+import { useUpdateUserStatusMutation, useUserDataQuery } from "@/redux/features/auth/auth.api";
 import {
   Table,
   TableBody,
@@ -10,12 +9,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { useUpdateWalletMutation } from "@/redux/features/wallets/wallet.api";
 
 const AllUser = () => {
   const { data } = useUserDataQuery(undefined);
-  const [updateWalletStatus, { isLoading }] = useUpdateWalletMutation();
-  console.log(updateWalletStatus)
+  const [updateUserStatus, { isLoading }] = useUpdateUserStatusMutation();
 
   const users = data?.data?.data || [];
 
@@ -23,7 +20,7 @@ const AllUser = () => {
     try {
       const newStatus = currentStatus === "ACTIVE" ? "BLOCKED" : "ACTIVE";
 
-      await updateWalletStatus({ walletId: id, status: newStatus }).unwrap();
+      await updateUserStatus({ userId: id, status: newStatus }).unwrap();
 
       console.log(`User ${id} status updated to ${newStatus}`);
     } catch (error) {

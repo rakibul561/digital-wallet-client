@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "@/redux/base.api";
 
 const walletApi = baseApi.injectEndpoints({
@@ -64,15 +65,6 @@ const walletApi = baseApi.injectEndpoints({
       invalidatesTags: ["WALLET"],
     }),
 
-    
-    updateWallet: builder.mutation({
-  query: ({ walletId, status }) => ({
-    url: `/wallets/block/${walletId}`,
-    method: "PATCH",
-    body: { status },
-  }),
-  invalidatesTags: ["WALLET"],
-}),
 
   }),
 });
@@ -85,5 +77,4 @@ export const {
   useCashInMutation,
   useCashOutMutation,
   useAllTransactionQuery,
-  useUpdateWalletMutation,
 } = walletApi;

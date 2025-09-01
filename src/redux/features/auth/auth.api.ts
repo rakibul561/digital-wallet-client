@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "@/redux/base.api";
 
  
@@ -41,9 +42,28 @@ import { baseApi } from "@/redux/base.api";
             
         }),
           providesTags: ["USER"]
-       })
+       }),
+
+       updateUserStatus: builder.mutation<any, { userId: string; status: string }>({
+             query: ({ userId, status }) => ({
+               url: `/user/${userId}/status`,
+               method: "PATCH",
+               body: { status },
+             }),
+             invalidatesTags: ["USER"],
+           }),
+       
+
+
+
+
     })
  })
 
 
- export const {useRegisterMutation, useLoginMutation, useLogoutMutation,useUserInfoQuery, useUserDataQuery} = authApi
+ export const {useRegisterMutation, useLoginMutation, useLogoutMutation,useUserInfoQuery,
+ useUserDataQuery,
+ useUpdateUserStatusMutation
+   
+
+ } = authApi
