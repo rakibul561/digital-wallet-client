@@ -16,6 +16,10 @@ const Profile = () => {
 
    const handleSubmit = (data:string) =>{
       console.log("hello world")
+      console.log("hello world")
+      console.log(data
+        
+      )
    }
 
   return (
