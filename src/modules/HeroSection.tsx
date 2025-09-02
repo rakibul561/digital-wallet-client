@@ -3,8 +3,26 @@ import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/assets/icons/Logo";
 import img from "@/assets/image/bg.jpg"
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export const HeroSection = () => {
+
+   const {data:user} = useUserInfoQuery(undefined);
+   const navigate = useNavigate();
+  
+   const handleClick = () =>{
+       if(user?.data){
+        navigate("/")
+        toast.success("you are already create account")
+       }
+       else{
+        navigate("/register")
+       }
+   }
+
+
   return (
     <section className="relative overflow-hidden py-32">
       <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
@@ -25,16 +43,16 @@ export const HeroSection = () => {
                Your Digital Payment {" "}
                 <span className="text-primary">Solution</span>
               </h1>
-              <p className="mx-auto max-w-3xl text-muted-foreground lg:text-xl">
+              <p className="mx-auto max-w-3xl text-muted lg:text-xl">
                 Send money, receive payments, and manage your finances with ease. PayWave makes digital transactions simple, secure, and instant. Mobile recharge, bill payments, online shopping - everything in one place
               </p>
             </div>
             <div className="mt-6 flex justify-center gap-3">
-              <Button className="shadow-sm transition-shadow hover:shadow">
+              <Button onClick={handleClick} className="shadow-sm transition-shadow hover:shadow">
                 Get Started
               </Button>
               <Button variant="outline" className="group">
-                Learn more{" "}
+              <Link to="/features"> Learn more{" "}</Link>
                 <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
             </div>

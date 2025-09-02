@@ -14,6 +14,7 @@ import Loading from "@/loading";
 const AllTransaction = () => {
   const { data, isLoading } = useAllTransactionQuery(undefined);
 
+
   if (isLoading) return <Loading />;
 
   const transactions = data?.data || [];

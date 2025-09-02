@@ -24,7 +24,7 @@ const handleToggleStatus = async (id: string, currentStatus: string) => {
     await updateUserStatus({ userId: id, status: newStatus }).unwrap();
     toast.success("User Staus Updated")
 
-    console.log(`✅ User ${id} status updated to ${newStatus}`);
+    
   } catch (error) {
     console.error(" Error updating status:", error);
   }

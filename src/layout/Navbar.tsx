@@ -38,11 +38,6 @@ const navigationLinks = [
 export default function Navbar() {
   const { data } = useUserInfoQuery(undefined);
 
-
-  
-
-  
-
   const [logout] = useLogoutMutation();
   const dispatch = useAppDispatch();
 
@@ -60,9 +55,9 @@ export default function Navbar() {
   return (
     <header className="border-b px-4 md:px-6">
       <div className="flex h-16 items-center justify-between gap-4">
-        {/* Left side */}
+        
         <div className="flex items-center gap-2">
-          {/* Mobile menu trigger */}
+         
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -101,23 +96,37 @@ export default function Navbar() {
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
                   {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink href={link.href} className="py-1.5">
-                        {link.label}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
+                  <>
+                   {
+                    link.role === "PUBLIC" && ( <NavigationMenuItem key={index}>
+                    <NavigationMenuLink className="text-muted-foreground hover:text-primary py-1.5 font-medium">
+                      <Link to={link.href}>{link.label} </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>)
+                   }
+                   {
+                    link.role === data?.data?.role && ( <NavigationMenuItem key={index}>
+                    <NavigationMenuLink className="text-muted-foreground hover:text-primary py-1.5 font-medium">
+                      <Link to={link.href}>{link.label} </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>)
+                   }
+                  </>
+                ))}
                 </NavigationMenuList>
               </NavigationMenu>
             </PopoverContent>
           </Popover>
-          {/* Main nav */}
+         
           <div className="flex items-center gap-6">
+            
             <Link to="/" className="text-primary hover:text-primary/90">
               <Logo />
             </Link>
-            {/* Navigation menu */}
+             <h2 className="text-xl font-bold text-[#FF4D00]">Esay Pay</h2>
+          
             <NavigationMenu className="max-md:hidden">
+
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
                   <>
@@ -138,10 +147,12 @@ export default function Navbar() {
                   </>
                 ))}
               </NavigationMenuList>
+
+
             </NavigationMenu>
           </div>
         </div>
-        {/* Right side */}
+        
         <div className="flex items-center gap-2">
           <ModeToggle />
           {data?.data?.email && (

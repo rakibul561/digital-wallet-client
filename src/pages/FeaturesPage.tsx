@@ -2,7 +2,9 @@
 import { FaMoneyBillWave, FaWallet, FaShieldAlt, FaMobileAlt, FaBolt, FaHistory } from "react-icons/fa";
 import { Banner } from "./Banner";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import {  useNavigate } from "react-router";
+import { toast } from "sonner";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 
 const features = [
   {
@@ -38,6 +40,19 @@ const features = [
 ];
 
 const FeaturesPage = () => {
+
+   const {data:user} = useUserInfoQuery(undefined);
+     const navigate = useNavigate();
+    
+     const handleClick = () =>{
+         if(user?.data){
+          navigate("/")
+          toast.success("you are already create account")
+         }
+         else{
+          navigate("/register")
+         }
+     }
   return (
     <div className="min-h-screen ">
       
@@ -63,10 +78,10 @@ const FeaturesPage = () => {
         <h2 className="text-3xl font-bold mb-4">
           Ready to Experience Seamless Digital Payments?
         </h2>
-        <Button className="shadow-sm transition-shadow hover:shadow">
-                 <Link to="/register">
+        <Button onClick={handleClick} className="shadow-sm transition-shadow hover:shadow">
+               
                 Get Started Today
-                </Link>
+          
               </Button>
               
       </section>

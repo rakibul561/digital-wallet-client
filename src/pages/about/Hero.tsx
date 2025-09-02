@@ -2,9 +2,27 @@
 import { Button } from "@/components/ui/button";
 import Logo from "@/assets/icons/Logo";
 import img from "@/assets/image/bg2.jpg"
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { toast } from "sonner";
 
 export const Hero = () => {
+
+  const {data:user} = useUserInfoQuery(undefined);
+ const navigate = useNavigate();
+
+ const handleClick = () =>{
+     if(user?.data){
+      navigate("/")
+      toast.success("you are already create account")
+     }
+     else{
+      navigate("/register")
+     }
+ }
+
+
+
   return (
     <section className="relative overflow-hidden py-32">
       <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
@@ -31,10 +49,10 @@ export const Hero = () => {
               </p>
             </div>
             <div className="mt-6 flex justify-center gap-3">
-              <Button className="shadow-sm transition-shadow hover:shadow">
-                 <Link to="/register">
+              <Button onClick={handleClick} className="shadow-sm transition-shadow hover:shadow">
+                
                 Get Started Today
-                </Link>
+             
               </Button>
               
             </div>

@@ -18,27 +18,25 @@ import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { getSidebarItems } from "@/utlis/getSliderbarItems";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  
-  const {data:userData} = useUserInfoQuery(undefined)
-  
-const role = userData?.data?.role ?? "No role found";
+  const { data: userData } = useUserInfoQuery(undefined);
 
-console.log("Role:", role);
+  const role = userData?.data?.role ?? "No role found";
 
-const data = {
-  navMain: getSidebarItems(role)
-  
-};
+  const data = {
+    navMain: getSidebarItems(role),
+  };
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader className="items-center">
-        <Link to="/">
-          <Logo />
-        </Link>
+      <SidebarHeader className="">
+        <div className="flex gap-4 p-1">
+          <Link to="/" className="text-primary hover:text-primary/90">
+            <Logo />
+          </Link>
+          <h2 className="text-xl mt-2 font-bold text-[#FF4D00]">Esay Pay</h2>
+        </div>
       </SidebarHeader>
       <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>

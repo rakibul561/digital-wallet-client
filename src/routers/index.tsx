@@ -73,7 +73,7 @@ import { FAQPage } from "@/pages/FAQPage";
     Component:withAuth(DashBoardLayout, role.agent as TRole),
     path:'/agent',
     children: [
-       {index:true , element:<Navigate to="/agent/history" />},
+       {index:true , element:<Navigate to="/agent/profile" />},
       ...generateRoutes(agentSidebarItems)
     ]
 
@@ -82,7 +82,7 @@ import { FAQPage } from "@/pages/FAQPage";
     Component:withAuth(DashBoardLayout, role.user as TRole),
     path:'/user',
     children: [
-      {index:true , element:<Navigate to="/user/wallets/balance" />},
+      {index:true , element:<Navigate to="/user/profile" />},
       ...generateRoutes(userSidebarItems)
     ]
    } ,
