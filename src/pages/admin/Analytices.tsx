@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -31,7 +32,7 @@ const Analytics = () => {
 
   // Monthly Transaction aggregation
   const monthlyMap: Record<string, number> = {}
-  transactions.forEach((txn) => {
+  transactions.forEach((txn:any) => {
     const date = new Date(txn.createdAt)
     const month = date.toLocaleString("default", { month: "short" })
     const year = date.getFullYear()
@@ -46,7 +47,7 @@ const Analytics = () => {
 
   // Wallet Distribution (sum per user)
   const walletMap: Record<string, number> = {}
-  transactions.forEach((txn) => {
+  transactions.forEach((txn:any) => {
     const user = txn.senderId ?? "Unknown"
     if (!walletMap[user]) walletMap[user] = 0
     walletMap[user] += txn.amount ?? 0
