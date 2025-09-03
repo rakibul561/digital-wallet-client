@@ -21,7 +21,7 @@ export const Banner = () => {
    }
   
   return (
-    <section className="relative overflow-hidden py-32">
+    <section className="relative overflow-hidden mt-20 py-32">
       <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
         <img
           alt="background"

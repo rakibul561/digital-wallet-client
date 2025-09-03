@@ -22,7 +22,6 @@ import { useAppDispatch } from "@/redux/hook";
 import { role } from "@/constant/role";
 import { toast } from "sonner";
 
-// Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home", role:"PUBLIC" },
   { href: "/about", label: "About", role:"PUBLIC" },
@@ -53,7 +52,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="border-b px-4 md:px-6">
+    <header className=" p-2 fixed top-0 left-0 w-full border-b bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md px-4 md:px-6 z-50">
       <div className="flex h-16 items-center justify-between gap-4">
         
         <div className="flex items-center gap-2">

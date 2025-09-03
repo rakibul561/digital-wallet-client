@@ -7,7 +7,7 @@ const teamMembers = [
   {
     name: "Rakibul Hasan",
     role: "Frontend Developer",
-    image: "https://i.pravatar.cc/150?img=1",
+    image: "https://i.ibb.co.com/N2T3p7pt/6235563903111250629-1.png?img=1",
   },
   {
     name: "Ayesha Khan",
@@ -23,10 +23,11 @@ const teamMembers = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white dark:from-zinc-900 dark:to-zinc-950 text-zinc-800 dark:text-zinc-100">
+    <div className="min-h-screen bg-gradient-to-b  text-zinc-800 dark:text-zinc-100 mt-20">
       
       <Hero/>
-      <section className="text-center py-16 px-4">
+     <div className="mt-4">
+       <section className="text-center py-16 px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -86,7 +87,6 @@ export default function About() {
         </p>
       </section>
 
-      {/* Team Section */}
       <section className="py-12 px-6 max-w-6xl mx-auto">
         <h2 className="text-2xl font-semibold mb-8 text-center text-[#F54A00]">
           Meet the Team
@@ -116,6 +116,7 @@ export default function About() {
           ))}
         </div>
       </section>
+     </div>
     </div>
   );
 }

@@ -25,7 +25,7 @@ export const Hero = () => {
         <img
           alt="background"
           src={img}
-          className="[mask-image:radial-gradient(75%_75%_at_center,white,transparent)] opacity-90"
+          className="[mask-image:radial-gradient(75%_75%_at_center,white,transparent)] h-full w-full opacity-90"
         />
        
         <div className="absolute inset-0 bg-white/40 dark:bg-black/40" />
