@@ -1,4 +1,4 @@
-import Loading from "@/loading"
+
 import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
 import { Mail, Phone, MapPin, User } from "lucide-react"
 import { UpdateProfile } from "./Modal"

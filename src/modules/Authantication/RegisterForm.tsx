@@ -196,7 +196,6 @@ export function RegisterForm({
                     <SelectContent>
                       <SelectItem value="USER">USER</SelectItem>
                       <SelectItem value="AGENT">AGENT</SelectItem>
-                      <SelectItem value="ADMIN">ADMIN</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
