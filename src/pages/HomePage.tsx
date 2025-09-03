@@ -1,16 +1,15 @@
 import { HeroSection } from "@/modules/HeroSection";
-import { FAQPage } from "./FAQPage";
-import ContactPage from "./ContactPage";
 import PublicUser from "./PublicUser";
+import FAQPage from "./FAQPage";
 
 const HomePage = () => {
     return (
         <div>
             
             <HeroSection/>
-            <FAQPage/>
             <PublicUser/>
-            <ContactPage/>
+            <FAQPage/>
+            
         </div>
     );
 };

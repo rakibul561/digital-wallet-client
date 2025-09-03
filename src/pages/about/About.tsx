@@ -23,14 +23,14 @@ const teamMembers = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-zinc-900 dark:to-zinc-950 text-zinc-800 dark:text-zinc-100">
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white dark:from-zinc-900 dark:to-zinc-950 text-zinc-800 dark:text-zinc-100">
       
       <Hero/>
       <section className="text-center py-16 px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-5xl font-bold mb-4 text-yellow-600"
+          className="text-4xl md:text-5xl font-bold mb-4 text-[#F54A00]"
         >
           About Our Digital Wallet
         </motion.h1>
@@ -45,14 +45,14 @@ export default function About() {
         </motion.p>
       </section>
 
-      {/* Mission Section */}
+      
       <section className="py-12 px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         <motion.div
           initial={{ x: -40, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl font-semibold mb-3 text-yellow-500">Our Mission</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-[#F54A00]">Our Mission</h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
             Our mission is to provide financial freedom by making cashless transactions
             accessible to everyone. Whether you’re in the city or a remote village,
@@ -74,7 +74,7 @@ export default function About() {
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-2xl font-semibold mb-4 text-yellow-500"
+          className="text-2xl font-semibold mb-4 text-[#F54A00]"
         >
           Our Story
         </motion.h2>
@@ -88,7 +88,7 @@ export default function About() {
 
       {/* Team Section */}
       <section className="py-12 px-6 max-w-6xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-8 text-center text-yellow-500">
+        <h2 className="text-2xl font-semibold mb-8 text-center text-[#F54A00]">
           Meet the Team
         </h2>
         <div className="grid gap-6 md:grid-cols-3">
@@ -104,7 +104,7 @@ export default function About() {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-24 h-24 rounded-full border-4 border-yellow-400 mb-4"
+                    className="w-24 h-24 rounded-full border-4 border-[#F54A00] mb-4"
                   />
                   <CardTitle>{member.name}</CardTitle>
                 </CardHeader>

@@ -9,9 +9,9 @@ import img8 from '@/assets/images/img8.jpg'
 
 const PublicUser = () => {
   return (
-    <div className='mb-20'>
+    <div className='mb-20 mt-20'>
         <div>
-            <h2 className="text-center text-4xl font-bold mb-8"> EsayPaY in Everyday Life</h2>
+            <h2 className="text-center text-4xl font-bold mb-8"> <span className='text-primary'>Esay Pay</span> in Everyday Life</h2>
         </div>
       <section className="py-6  border-8 rounded-2xl">
         <div className="container flex flex-col justify-center p-4 mx-auto">

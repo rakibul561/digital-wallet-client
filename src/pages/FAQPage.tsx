@@ -1,77 +1,72 @@
-
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface Faq5Props {
-  badge?: string;
-  heading?: string;
-  description?: string;
-  faqs?: FaqItem[];
-}
-
-const defaultFaqs: FaqItem[] = [
-  {
-    question: "What is a Digital Wallet?",
-    answer:
-      "A Digital Wallet is an electronic application that allows you to store, send, and receive money securely using your phone or computer.",
-  },
-  {
-    question: "How do I deposit money into my wallet?",
-    answer:
-      "You can deposit money via agents (cash-in), bank transfer, or other supported payment methods. Once deposited, the balance is instantly available in your wallet.",
-  },
-  {
-    question: "How can I send money to another user?",
-    answer:
-      "Simply enter the recipient's phone number or registered email, specify the amount, and confirm the transaction. The money will be transferred instantly.",
-  },
-  {
-    question: "Is my money safe in the wallet?",
-    answer:
-      "Yes, your wallet uses advanced encryption, secure authentication, and transaction monitoring to ensure your money is safe at all times.",
-  },
-  {
-    question: "Can I track my transaction history?",
-    answer:
-      "Absolutely! You can view all your deposits, withdrawals, and money transfers in the transaction history section with filters for date and type.",
-  },
-];
-
-export const FAQPage = ({
-  heading = "Frequently Asked Questions",
-  description = "Find answers to common questions about our Digital Wallet platform.",
-  faqs = defaultFaqs,
-}: Faq5Props) => {
+const FAQPage = () => {
   return (
-    <section className="py-32">
-      <div className="container">
-        <div className="text-center">
-          <h1 className="mt-4 text-4xl font-semibold">{heading}</h1>
-          <p className="mt-6 font-medium text-muted-foreground">
-            {description}
-          </p>
-        </div>
-        <div className="mx-auto mt-14 max-w-xl">
-          {faqs.map((faq, index) => (
-            <div key={index} className="mb-8 flex gap-4">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-secondary font-mono text-xs text-primary">
-                {index + 1}
-              </span>
-              <div>
-                <div className="mb-2 flex items-center justify-between">
-                  <h3 className="font-medium">{faq.question}</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{faq.answer}</p>
-              </div>
+    <div className="border shadow-xl mt-10 mb-10 rounded-t-xl">
+      <section className="dark:bg-gray-100 dark:text-gray-800">
+        <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
+          <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">
+            Frequently Asked Questions
+          </h2>
+          <div className="divide-y dark:divide-gray-300">
+            {/* Q1 */}
+            <div className="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+              <h3 className="font-semibold md:col-span-5">
+                What is a Digital Wallet?
+              </h3>
+              <p className="md:pl-0 md:col-span-7">
+                A Digital Wallet is an electronic application that allows you to
+                securely store, send, and receive money using your phone or
+                computer.
+              </p>
             </div>
-          ))}
+            {/* Q2 */}
+            <div className="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+              <h3 className="font-semibold md:col-span-5">
+                How do I deposit money into my wallet?
+              </h3>
+              <p className="md:pl-0 md:col-span-7">
+                You can deposit money via agents (cash-in), bank transfers, or
+                other supported payment methods. Once deposited, the balance is
+                instantly available in your wallet.
+              </p>
+            </div>
+            {/* Q3 */}
+            <div className="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+              <h3 className="font-semibold md:col-span-5">
+                Can I send money to another user?
+              </h3>
+              <p className="md:pl-0 md:col-span-7">
+                Yes. Simply enter the recipient’s phone number or registered
+                email, specify the amount, and confirm the transaction. The
+                money will be transferred instantly.
+              </p>
+            </div>
+            {/* Q4 */}
+            <div className="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+              <h3 className="font-semibold md:col-span-5">
+                Is my money safe in the wallet?
+              </h3>
+              <p className="md:pl-0 md:col-span-7">
+                Absolutely. Our wallet uses advanced encryption, secure
+                authentication, and real-time fraud monitoring to ensure your
+                money and data are always protected.
+              </p>
+            </div>
+            {/* Q5 */}
+            <div className="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+              <h3 className="font-semibold md:col-span-5">
+                Can I track my transaction history?
+              </h3>
+              <p className="md:pl-0 md:col-span-7">
+                Yes. You can view all your deposits, withdrawals, and money
+                transfers in the transaction history section, with filters for
+                date and type.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
-
-
+export default FAQPage;

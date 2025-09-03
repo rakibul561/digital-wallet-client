@@ -16,7 +16,7 @@ import { userSidebarItems } from "./userSlidebar";
 import { withAuth } from "@/utlis/withAuth";
 import { role } from "@/constant/role";
 import type { TRole } from "@/types";
-import { FAQPage } from "@/pages/FAQPage";
+import FAQPage from "@/pages/FAQPage";
 
  
 
