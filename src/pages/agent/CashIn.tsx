@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -92,7 +93,7 @@ const cashIn = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {userOptions.map(user => (
+                    {userOptions.map((user:any) => (
                       <SelectItem key={user.value} value={user.value}>
                         {user.label}
                       </SelectItem>

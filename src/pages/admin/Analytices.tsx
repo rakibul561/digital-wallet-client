@@ -105,7 +105,7 @@ const Analytics = () => {
                 outerRadius={80}
                 label
               >
-                {walletPie.map((entry, index) => (
+                {walletPie.map((_entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>

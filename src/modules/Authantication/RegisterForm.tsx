@@ -25,6 +25,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import config from "@/config";
+
+
+
+// Component এর উপরে console করেন
+console.log("Config baseUrl:", config.baseUrl);
+console.log("VITE_BASE_URL:", import.meta.env.VITE_BASE_URL);
 
 const formSchema = z.object({
   name: z
@@ -94,16 +101,24 @@ export function RegisterForm({
     };
 
 
+try {
+  const res = await register(userInfo).unwrap();
+  console.log(res);
+  toast.success("User Register Successfully");
+  navigate("/login");
+} catch (error: any) {
+  if (error?.data?.message) {
+    console.log("Backend Error:", error.data.message);
+    toast.error(error.data.message);
+  } else if (error?.error) {
+    console.log("RTK Query Error:", error.error);
+    toast.error(error.error);
+  } else {
+    console.log("Unexpected Error:", error);
+    toast.error("Something went wrong");
+  }
+}
 
-    try {
-      const res = await register(userInfo).unwrap();
-      console.log(res);
-      toast.success("User Register Succesfullly");
-      navigate("/login");
-    } catch (error: any) {
-      console.log(error);
-      console.log(error.message);
-    }
   };
 
   return (
