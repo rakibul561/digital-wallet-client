@@ -23,10 +23,11 @@ const History = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading } = useHistoryQuery({ page: currentPage });
-  console.log("API Response:", data);
+  
 
   const transactions = data?.data?.data || [];
-  const totalPage = data?.data?.totalPages || 1; 
+  console.log("hello ", transactions);
+  const totalPage = data?.data?.totalPages || 1;
 
   if (isLoading) {
     return <Loading />;
@@ -40,8 +41,8 @@ const History = () => {
             <TableRow>
               <TableHead>Date</TableHead>
               <TableHead>Type</TableHead>
-              <TableHead>User</TableHead>
-              <TableHead>Wallet</TableHead>
+              <TableHead>From</TableHead>
+              <TableHead>To</TableHead>
               <TableHead className="text-right">Amount</TableHead>
             </TableRow>
           </TableHeader>
@@ -49,22 +50,37 @@ const History = () => {
             {transactions.length > 0 ? (
               transactions.map((tx: any) => (
                 <TableRow key={tx._id}>
+                  {/* Date */}
                   <TableCell>
                     {new Date(tx.createdAt).toLocaleString()}
                   </TableCell>
+
+                  {/* Type */}
                   <TableCell>
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-semibold ${
                         tx.type === "CASH_IN"
-                          ? "text-green-700"
-                          : "text-red-700"
+                          ? "text-green-700 bg-green-100"
+                          : tx.type === "WITHDRAW"
+                          ? "text-yellow-700 bg-yellow-100"
+                          : "text-blue-700 bg-blue-100"
                       }`}
                     >
                       {tx.type}
                     </span>
                   </TableCell>
-                  <TableCell>{tx.userId}</TableCell>
-                  <TableCell>{tx.walletId}</TableCell>
+
+                  {/* From */}
+                  <TableCell>
+                    {tx.type === "SEND_MONEY" ? tx.senderId : tx.userId}
+                  </TableCell>
+
+                  {/* To */}
+                  <TableCell>
+                    {tx.type === "SEND_MONEY" ? tx.receiverId : tx.walletId}
+                  </TableCell>
+
+                  {/* Amount */}
                   <TableCell className="text-right font-bold">
                     ${tx.amount}
                   </TableCell>
@@ -84,12 +100,10 @@ const History = () => {
         </Table>
       </div>
 
-      
       {totalPage > 1 && (
         <div className="flex justify-end mt-4">
           <Pagination>
             <PaginationContent>
-             
               <PaginationItem>
                 <PaginationPrevious
                   onClick={() =>
@@ -103,7 +117,6 @@ const History = () => {
                 />
               </PaginationItem>
 
-             
               {Array.from({ length: totalPage }, (_, index) => index + 1).map(
                 (page) => (
                   <PaginationItem
@@ -117,7 +130,6 @@ const History = () => {
                 )
               )}
 
-           
               <PaginationItem>
                 <PaginationNext
                   onClick={() =>

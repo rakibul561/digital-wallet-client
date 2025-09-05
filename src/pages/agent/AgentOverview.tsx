@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useHistoryQuery } from "@/redux/features/wallets/wallet.api";
+
 import {
   Table,
   TableBody,
@@ -9,11 +9,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Loading from "@/loading";
+import { useAgentHistoryQuery } from "@/redux/features/wallets/wallet.api";
 
 const AgentHistory = () => {
-  const { data, isLoading } = useHistoryQuery(undefined);
+  const { data, isLoading } = useAgentHistoryQuery(undefined)
+  
+  
   console.log(data)
   const transactions = data?.data?.data || [];
+  console.log("hello", transactions)
 
   if (isLoading) {
     return <Loading/>
