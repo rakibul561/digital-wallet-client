@@ -40,7 +40,7 @@ export const Banner = () => {
              Powerful Features to Simplify Your Digital Wallet Experience {" "}
                 <span className="text-primary">Wallet Experience </span>
               </h1>
-              <p className="mx-auto max-w-3xl text-muted-foreground lg:text-xl">
+              <p className="mx-auto max-w-3xl text-white lg:text-xl">
               From secure transactions to real-time tracking, we’ve got you covered.
 
               </p>

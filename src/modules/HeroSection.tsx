@@ -54,7 +54,7 @@ export const HeroSection = () => {
                     Your Digital Payment{" "}
                     <span className="text-primary">Solution</span>
                   </h1>
-                  <p className="mx-auto max-w-3xl text-muted lg:text-xl">
+                  <p className="mx-auto max-w-3xl  text-white lg:text-xl">
                     Send money, receive payments, and manage your finances with
                     ease. PayWave makes digital transactions simple, secure, and
                     instant. Mobile recharge, bill payments, online shopping -

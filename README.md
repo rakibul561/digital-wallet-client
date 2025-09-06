@@ -91,11 +91,8 @@ This Digital Wallet Frontend is a comprehensive financial application built with
 ## 🎬 Demo
 
 ### 🌐 Live URLs
-- **Frontend:** [https://your-wallet-frontend.vercel.app](https://your-wallet-frontend.vercel.app)
-- **Backend API:** [https://your-wallet-backend.herokuapp.com](https://your-wallet-backend.herokuapp.com)
-
-### 🎥 Demo Video
-[📺 Watch Full Demo (5-10 minutes)](https://your-demo-video-link.com)
+- **Frontend:** [https://digital-wallet-opal.vercel.app](https://digital-wallet-opal.vercel.app)
+- **Backend API:** [https://digital-wallet-api-seven.vercel.app](https://digital-wallet-api-seven.vercel.app)
 
 *Showcasing registration, login, wallet operations, and admin features*
 
@@ -248,28 +245,28 @@ digital-wallet-frontend/
 
 ### Admin Access
 ```
-Email: admin@digitalwallet.com
-Password: Admin@123
+Email: rakib101500@gmail.com
+Password: 123456789A@
 ```
 
 ### Agent Access
 ```
-Email: agent@digitalwallet.com  
-Password: Agent@123
+Email: ripon25@gmail.com  
+Password: Ripon@561
 ```
 
 ### User Access
 ```
-Email: user@digitalwallet.com
-Password: User@123
+Email: jhon@gmail.com
+Password: 123456789A@
 ```
 
 ## 📱 API Documentation
 
 ### Base URL
 ```
-Production: https://your-wallet-backend.herokuapp.com/api/v1
-Development: http://localhost:5000/api/v1
+Production: https://digital-wallet-api-seven.vercel.app/api
+Development: http://localhost:5000/api
 ```
 
 ### Key Endpoints
@@ -298,80 +295,9 @@ Development: http://localhost:5000/api/v1
 - `GET /admin/agents` - Get all agents
 - `GET /admin/analytics` - System analytics
 
-## 🎯 Features Walkthrough
-
-### 🎪 Guided Tour Steps
-1. **Navigation Menu** - Explore different dashboard sections
-2. **Dashboard Stats** - Understanding key metrics and data
-3. **Chart Visualization** - Analyzing trends and patterns  
-4. **Search & Filters** - Finding and filtering records efficiently
-5. **Theme Toggle** - Switching between light and dark modes
-
-### 📊 Data Visualization
-- **Balance Cards** - Real-time wallet balances
-- **Transaction Charts** - Monthly/weekly transaction trends
-- **User Analytics** - Registration and activity patterns
-- **Commission Tracking** - Agent earnings visualization
-
-### 🔍 Advanced Features
-- **Smart Search** - Search across multiple fields
-- **Date Range Filtering** - Custom date selections
-- **Status Filters** - Filter by transaction status
-- **Amount Sorting** - Sort by transaction amounts
-- **Export Options** - Download filtered data
-
-## 🚀 Deployment
-
-### Frontend Deployment (Vercel)
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy to Vercel
-vercel --prod
-```
-
-### Backend Deployment (Heroku)
-```bash
-# Login to Heroku
-heroku login
-
-# Create Heroku app
-heroku create your-wallet-backend
-
-# Deploy
-git push heroku main
-```
-
-## 🤝 Contributing
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact & Support
-
 ### Developer Information
-- **Developer:** [Your Name]
-- **Email:** your.email@example.com
-- **LinkedIn:** [Your LinkedIn Profile]
-- **GitHub:** [Your GitHub Profile]
+- **Developer:** [Rakibul hasan]
+- **Email:** devrakib2@gmail.com
+- **LinkedIn:** [[Your LinkedIn Profile](https://www.linkedin.com/in/rakibul-hasan-b94123271/)]
+- **GitHub:** [[Your GitHub Profile](https://github.com/rakibul561)]
 
-### Project Links
-- **Frontend Repository:** [GitHub Link]
-- **Backend Repository:** [GitHub Link]
-- **Live Demo:** [Live URL]
-- **API Documentation:** [API Docs Link]
-
----
-
-<div align="center">
-  <p><strong>⭐ If you found this project helpful, please give it a star! ⭐</strong></p>
-  <p>Made with ❤️ by [Your Name]</p>
-</div>
