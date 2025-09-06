@@ -128,7 +128,7 @@ This Digital Wallet Frontend is a comprehensive financial application built with
 ### Clone the Repository
 ```bash
 # Clone the frontend repository
-git clone https://github.com/yourusername/digital-wallet-frontend.git
+git clone https://github.com/rakibul561/digital-wallet-client
 cd digital-wallet-frontend
 
 # Clone the backend repository (if separate)
