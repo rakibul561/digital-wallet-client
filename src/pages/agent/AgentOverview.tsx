@@ -13,10 +13,10 @@ import { useAgentHistoryQuery } from "@/redux/features/wallets/wallet.api";
 
 const AgentHistory = () => {
   const { data, isLoading } = useAgentHistoryQuery(undefined)
-  
+
   
   console.log(data)
-  const transactions = data?.data?.data || [];
+  const transactions = data?.data;
   console.log("hello", transactions)
 
   if (isLoading) {
