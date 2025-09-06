@@ -132,7 +132,7 @@ git clone https://github.com/rakibul561/digital-wallet-client
 cd digital-wallet-frontend
 
 # Clone the backend repository (if separate)
-git clone https://github.com/yourusername/digital-wallet-backend.git
+git clone https://github.com/rakibul561/digital-wallet-api
 ```
 
 ### Install Dependencies
