@@ -21,7 +21,9 @@ import {
 import { useAppDispatch } from "@/redux/hook";
 import { role } from "@/constant/role";
 import { toast } from "sonner";
+ 
 
+// set all navlinks
 const navigationLinks = [
   { href: "/", label: "Home", role:"PUBLIC" },
   { href: "/about", label: "About", role:"PUBLIC" },

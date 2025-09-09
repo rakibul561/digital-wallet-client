@@ -114,7 +114,7 @@ const Footer = () => {
                 </a>
               </li>
 
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   rel="noreferrer"
@@ -136,7 +136,7 @@ const Footer = () => {
                     />
                   </svg>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
