@@ -9,13 +9,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Loading from "@/loading";
+
 
 const AllTransaction = () => {
-  const { data, isLoading } = useAllTransactionQuery(undefined);
+  const { data } = useAllTransactionQuery(undefined);
 
 
-  if (isLoading) return <Loading />;
 
   const transactions = data?.data || [];
 

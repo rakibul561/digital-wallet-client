@@ -19,9 +19,10 @@ const walletApi = baseApi.injectEndpoints({
       }),
       providesTags: ["WALLET"], 
     }),
+    
     agentHistory: builder.query({
       query: () => ({
-        url: "/transactions/my",
+        url: "/transactions/me",
         method: "GET",
         
       }),

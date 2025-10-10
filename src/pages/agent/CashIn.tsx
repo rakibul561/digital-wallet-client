@@ -29,6 +29,8 @@ const cashIn = () => {
       label: user.name,
     })) || [];
 
+     const agentBalance = userData?.data?.balance || 0;
+
   const form = useForm<ISEND>({
     defaultValues: {
       amount: "",
@@ -37,6 +39,15 @@ const cashIn = () => {
   });
 
   const onSubmit = async (data: ISEND) => {
+
+    const inputAmount = Number(data?.amount);
+
+    // শর্ত চেক করা হচ্ছে
+    if (inputAmount > agentBalance) {
+      toast.error(`You cannot cash in more than your balance (${agentBalance} ৳)`);
+      return;
+    }
+
       const userInfo = {
         amount:data?.amount,
         userId:data?.userId

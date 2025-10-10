@@ -9,7 +9,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Loading from "@/loading";
 import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { useWalletQuery, useWithdrawMutation } from "@/redux/features/wallets/wallet.api";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -28,7 +27,7 @@ const Withdraw = () => {
 
   const [wallets] = useWithdrawMutation()
 
-  const { data: walletData, isLoading, } = useWalletQuery(walletId!, {
+  const { data: walletData } = useWalletQuery(walletId!, {
     skip: !walletId,
   });
 
@@ -39,9 +38,7 @@ const Withdraw = () => {
     },
   });
 
-  if(isLoading){
-    return <Loading/>
-  }
+
 
   const onSubmit: SubmitHandler<WithdrawFormValues> = async (data) => {
    

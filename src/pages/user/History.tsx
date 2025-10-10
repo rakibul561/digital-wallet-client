@@ -8,7 +8,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Loading from "@/loading";
 import {
   Pagination,
   PaginationContent,
@@ -22,16 +21,14 @@ import { useState } from "react";
 const History = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading } = useHistoryQuery({ page: currentPage });
+  const { data } = useHistoryQuery({ page: currentPage });
   
 
   const transactions = data?.data?.data || [];
   console.log("hello ", transactions);
   const totalPage = data?.data?.totalPages || 1;
 
-  if (isLoading) {
-    return <Loading />;
-  }
+
 
   return (
     <div className="p-4">

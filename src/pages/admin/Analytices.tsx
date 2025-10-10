@@ -2,7 +2,6 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import Loading from "@/loading";
 import { useUserDataQuery } from "@/redux/features/auth/auth.api";
 import { useAllTransactionQuery } from "@/redux/features/wallets/wallet.api";
 import {
@@ -32,10 +31,9 @@ const COLORS = [
 
 const Analytics = () => {
   const { data: userData } = useUserDataQuery(undefined);
-  const { data: transactionData, isLoading } =
+  const { data: transactionData } =
     useAllTransactionQuery(undefined);
 
-  if (isLoading) return <Loading />;
 
   const totalUsers = userData?.data?.meta?.total ?? 0;
   const allTransactionCount = transactionData?.data?.length ?? 0;
