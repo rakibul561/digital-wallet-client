@@ -1,3 +1,4 @@
+"use client";
 
 import { Button } from '@/components/ui/button'
 import { HeroHeader } from './header'
@@ -5,138 +6,92 @@ import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { ChevronRight } from 'lucide-react'
 import { Link } from 'react-router'
+import Lottie from "lottie-react"
+import bgAnimation from "../../public/lotto.json"
 
 export default function HeroSection() {
+    const features = [
+        "Instant Send Money",
+        "Cash Out",
+        "Bill Payment",
+        "Mobile Recharge",
+        "QR Pay",
+        "Balance Check",
+        "Transaction History",
+        "Secure Login",
+    ]
+
     return (
         <>
             <HeroHeader />
             <main className="overflow-x-hidden">
-                <section>
-                    <div className="py-24 md:pb-32 lg:pb-36 lg:pt-72">
-                        <div className="relative mx-auto flex max-w-7xl flex-col px-6 lg:block lg:px-12">
-                            <div className="mx-auto max-w-lg text-center lg:ml-0 lg:max-w-full lg:text-left">
-                                <h1 className="mt-8 max-w-2xl text-balance text-5xl md:text-6xl lg:mt-16 xl:text-7xl">Build 10x Faster with NS</h1>
-                                <p className="mt-8 max-w-2xl text-balance text-lg">Highly customizable components for building modern websites and applications you mean it.</p>
+                <section className="relative py-20 lg:py-32 bg-background">
+                    <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:px-12 gap-10">
+                        
+                        {/* ===== Left Side: Text Content ===== */}
+                        <div className="flex-1 text-center lg:text-left">
+                            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                                Manage Your <br /> Money Smartly
+                            </h1>
+                            <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">
+                                A modern digital wallet for seamless payments, secure transactions, and real-time balance updates.
+                            </p>
 
-                                <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
-                                    <Button
-                                        asChild
-                                        size="lg"
-                                        className="h-12 rounded-full pl-5 pr-3 text-base">
-                                        <Link to="#link">
-                                            <span className="text-nowrap">Start Building</span>
-                                            <ChevronRight className="ml-1" />
-                                        </Link>
-                                    </Button>
-                                    <Button
-                                        key={2}
-                                        asChild
-                                        size="lg"
-                                        variant="ghost"
-                                        className="h-12 rounded-full px-5 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5">
-                                        <Link to="#link">
-                                            <span className="text-nowrap">Request a demo</span>
-                                        </Link>
-                                    </Button>
-                                </div>
+                            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                                <Button
+                                    asChild
+                                    size="lg"
+                                    className="h-12 rounded-full px-6 text-base bg-orange-500 hover:bg-orange-600">
+                                    <Link to="#link">
+                                        <span>Get Started</span>
+                                        <ChevronRight className="ml-1" />
+                                    </Link>
+                                </Button>
+
+                                <Button
+                                    asChild
+                                    size="lg"
+                                    variant="ghost"
+                                    className="h-12 rounded-full px-6 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5">
+                                    <Link to="#link">
+                                        <span>Learn More</span>
+                                    </Link>
+                                </Button>
                             </div>
                         </div>
-                        <div className="aspect-2/3 absolute inset-1 -z-10 overflow-hidden rounded-3xl border border-black/10 lg:aspect-video lg:rounded-[3rem] dark:border-white/5">
-                            <video
-                                autoPlay
-                                loop
-                                className="size-full object-cover opacity-50 invert dark:opacity-35 dark:invert-0 dark:lg:opacity-75"
-                                src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"></video>
+
+                        {/* ===== Right Side: Lottie Animation ===== */}
+                        <div className="flex-1 flex justify-center lg:justify-end">
+                            <Lottie
+                                animationData={bgAnimation}
+                                loop={true}
+                                autoplay={true}
+                                className="w-[350px] md:w-[450px] lg:w-[500px]"
+                            />
                         </div>
                     </div>
                 </section>
+
+                {/* ===== Feature Marquee Section ===== */}
                 <section className="bg-background pb-2">
                     <div className="group relative m-auto max-w-7xl px-6">
                         <div className="flex flex-col items-center md:flex-row">
                             <div className="md:max-w-44 md:border-r md:pr-6">
-                                <p className="text-end text-sm">Powering the best teams</p>
+                                <p className="text-end text-sm">Our Key Features</p>
                             </div>
+
                             <div className="relative py-6 md:w-[calc(100%-11rem)]">
-                                <InfiniteSlider
-                                    speedOnHover={20}
-                                    speed={40}
-                                    gap={112}>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-5 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                            alt="Nvidia Logo"
-                                            height="20"
-                                            width="auto"
-                                        />
-                                    </div>
-
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-4 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/column.svg"
-                                            alt="Column Logo"
-                                            height="16"
-                                            width="auto"
-                                        />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-4 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/github.svg"
-                                            alt="GitHub Logo"
-                                            height="16"
-                                            width="auto"
-                                        />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-5 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/nike.svg"
-                                            alt="Nike Logo"
-                                            height="20"
-                                            width="auto"
-                                        />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-5 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                            alt="Lemon Squeezy Logo"
-                                            height="20"
-                                            width="auto"
-                                        />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-4 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                            alt="Laravel Logo"
-                                            height="16"
-                                            width="auto"
-                                        />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-7 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/lilly.svg"
-                                            alt="Lilly Logo"
-                                            height="28"
-                                            width="auto"
-                                        />
-                                    </div>
-
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-6 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/openai.svg"
-                                            alt="OpenAI Logo"
-                                            height="24"
-                                            width="auto"
-                                        />
-                                    </div>
+                                <InfiniteSlider speedOnHover={20} speed={40} gap={80}>
+                                    {features.map((feature, index) => (
+                                        <div key={index} className="flex items-center justify-center">
+                                            <span className="text-lg font-medium text-[#F54A00] hover:text-orange-500 transition-all duration-300">
+                                                {feature}
+                                            </span>
+                                        </div>
+                                    ))}
                                 </InfiniteSlider>
 
+                                {/* Fade / Blur effects */}
                                 <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
                                 <div className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"></div>
                                 <ProgressiveBlur

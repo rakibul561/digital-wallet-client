@@ -1,6 +1,17 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const FAQPage = () => {
+
+   useEffect(() => {
+    AOS.init({
+      duration: 1000, // animation duration (in ms)
+      once: true, // whether animation should happen only once
+    });
+  }, []);
   return (
-    <div className="border shadow-xl mt-20 mb-10 rounded-t-xl">
+    <div data-aos="zoom-out-down"  className="border shadow-xl mt-20 mb-10 rounded-t-xl">
       <section className="">
         <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
           <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">
