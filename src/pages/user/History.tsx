@@ -22,13 +22,10 @@ const History = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data } = useHistoryQuery({ page: currentPage });
-  
 
   const transactions = data?.data?.data || [];
   console.log("hello ", transactions);
   const totalPage = data?.data?.totalPages || 1;
-
-
 
   return (
     <div className="p-4">
@@ -55,13 +52,16 @@ const History = () => {
                   {/* Type */}
                   <TableCell>
                     <span
-                      className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        tx.type === "CASH_IN"
-                          ? "text-green-700 bg-green-100"
-                          : tx.type === "WITHDRAW"
-                          ? "text-yellow-700 bg-yellow-100"
-                          : "text-blue-700 bg-blue-100"
-                      }`}
+                      className={`inline-block w-28 text-center  px-2 py-1 text-xs font-semibold
+          ${
+            tx.type === "CASH_IN"
+              ? "text-green-700 bg-green-100"
+              : tx.type === "WITHDRAW"
+              ? "text-yellow-700 bg-yellow-100"
+              : tx.type === "CASH_OUT"
+              ? "text-red-700 bg-red-100"
+              : "text-blue-700 bg-blue-100"
+          }`}
                     >
                       {tx.type}
                     </span>
