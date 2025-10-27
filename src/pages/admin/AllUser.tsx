@@ -54,7 +54,7 @@ const handleToggleStatus = async (id: string, currentStatus: string) => {
                 <TableCell>{user.role}</TableCell>
                 <TableCell>
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                    className={`inline-block w-28 text-center  px-2 py-1 text-xs font-semibold ${
                       user.status === "ACTIVE"
                         ? "text-green-600 bg-green-100"
                         : "text-red-600 bg-red-100"

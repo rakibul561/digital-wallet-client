@@ -17,8 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useUserDataQuery } from "@/redux/features/auth/auth.api";
-import { useCashInMutation } from "@/redux/features/wallets/wallet.api";
+import { useUserDataQuery, useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { useCashInMutation, useWalletQuery } from "@/redux/features/wallets/wallet.api";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Wallet, ArrowDownToLine, User } from "lucide-react";
@@ -32,13 +32,28 @@ const CashIn = () => {
   const { data: userData } = useUserDataQuery(undefined);
   const [cashIn, { isLoading }] = useCashInMutation();
 
+  const { data: userInfo } = useUserInfoQuery(undefined);
+    const walletId = userInfo?.data?.walletId;
+   
+ 
+    const { data: walletData,} = useWalletQuery(walletId!, {
+      skip: !walletId,
+    });
+    console.log(walletData)
+   
+   const wallet = walletData?.data;
+
   const userOptions =
     userData?.data?.data?.map((user: { _id: string; name: string }) => ({
       value: user._id,
       label: user.name,
     })) || [];
 
-  const agentBalance = userData?.data?.balance || 0;
+
+    
+
+  const agentBalance = wallet?.balance || 0;
+  console.log(agentBalance)
 
   const form = useForm<ISEND>({
     defaultValues: {
@@ -147,7 +162,7 @@ const CashIn = () => {
                 </FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
-                    <SelectTrigger className="w-full h-12 border-2 border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-[#FF4D00] rounded-lg transition-all">
+                    <SelectTrigger className="w-full h-12 border-2 border-gray-200 text-black focus:ring-2 focus:ring-[#FF4D00] focus:border-[#FF4D00] rounded-lg transition-all">
                       <SelectValue placeholder="Select a user" />
                     </SelectTrigger>
                   </FormControl>

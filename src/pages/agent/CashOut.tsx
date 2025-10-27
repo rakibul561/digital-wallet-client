@@ -17,8 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useUserDataQuery } from "@/redux/features/auth/auth.api";
-import { useCashOutMutation } from "@/redux/features/wallets/wallet.api";
+import { useUserDataQuery, useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { useCashOutMutation, useWalletQuery } from "@/redux/features/wallets/wallet.api";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Wallet, ArrowUpToLine, User } from "lucide-react";
@@ -32,6 +32,16 @@ const CashOut = () => {
   const { data: userData } = useUserDataQuery(undefined);
   const [cashOut, { isLoading }] = useCashOutMutation();
 
+
+  const { data: userInfo } = useUserInfoQuery(undefined);
+      const walletId = userInfo?.data?.walletId;
+   
+      const { data: walletData,} = useWalletQuery(walletId!, {
+        skip: !walletId,
+      });
+     
+     const wallet = walletData?.data;
+
   const userOptions =
     userData?.data?.data?.map((user: { _id: string; name: string }) => ({
       value: user._id,
@@ -39,7 +49,7 @@ const CashOut = () => {
     })) || [];
 
 
-   const agentBalance = userData?.data?.balance || 0;
+   const agentBalance = wallet?.balance || 0;
    
 
   const form = useForm<ISEND>({
