@@ -249,17 +249,7 @@ Email: rakib101500@gmail.com
 Password: 123456789A@
 ```
 
-### Agent Access
-```
-Email: ripon25@gmail.com  
-Password: Ripon@561
-```
 
-### User Access
-```
-Email: ra@gmail.com
-Password: 123456789A@
-```
 
 ## 📱 API Documentation
 
