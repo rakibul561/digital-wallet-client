@@ -25,7 +25,7 @@ export default function RegitsetPage() {
         </div>
 
 
-        <div className="flex flex-1 items-center justify-center">
+        <div className="flex flex-1 border items-center justify-center">
           <div className="w-full max-w-xs">
             <RegisterForm />
           </div>

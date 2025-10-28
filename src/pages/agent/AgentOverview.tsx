@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useHistoryQuery } from "@/redux/features/wallets/wallet.api";
+import { useAgentHistoryQuery } from "@/redux/features/wallets/wallet.api";
 import {
   Table,
   TableBody,
@@ -20,30 +20,30 @@ import { useState } from "react";
 
 const History = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const { data } = useAgentHistoryQuery(undefined);
 
-  const { data } = useHistoryQuery({ page: currentPage });
-  console.log(data)
-  
+  console.log(data);
 
-  const transactions = data?.data?.data || [];
-  console.log("hello ", transactions);
-  const totalPage = data?.data?.totalPages || 1;
+  // API data structure অনুযায়ী
+  const transactions = data?.data || [];
 
-
+  // total page (যদি backend থেকে আসে)
+  const totalPage = 1;
 
   return (
     <div className="p-4">
-      <div className="border p-4">
+      <div className="border p-4 rounded-lg shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Date</TableHead>
               <TableHead>Type</TableHead>
-              <TableHead>From</TableHead>
-              <TableHead>To</TableHead>
+              <TableHead>From (User)</TableHead>
+              <TableHead>To (Wallet)</TableHead>
               <TableHead className="text-right">Amount</TableHead>
             </TableRow>
           </TableHeader>
+
           <TableBody>
             {transactions.length > 0 ? (
               transactions.map((tx: any) => (
@@ -56,7 +56,7 @@ const History = () => {
                   {/* Type */}
                   <TableCell>
                     <span
-                      className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      className={`inline-block w-28 text-center  px-2 py-1 text-xs font-semibold ${
                         tx.type === "CASH_IN"
                           ? "text-green-700 bg-green-100"
                           : tx.type === "WITHDRAW"
@@ -68,19 +68,25 @@ const History = () => {
                     </span>
                   </TableCell>
 
-                  {/* From */}
+                  {/* From (user info) */}
                   <TableCell>
-                    {tx.type === "SEND_MONEY" ? tx.senderId : tx.userId}
+                    {tx.userId?.name || "N/A"} <br />
+                    <span className="text-xs text-gray-500">
+                      {tx.userId?.email}
+                    </span>
                   </TableCell>
 
-                  {/* To */}
+                  {/* To (wallet info) */}
                   <TableCell>
-                    {tx.type === "SEND_MONEY" ? tx.receiverId : tx.walletId}
+                    ID: {tx.walletId?._id || "N/A"} <br />
+                    <span className="text-xs text-gray-500">
+                      Balance: {tx.walletId?.balance}
+                    </span>
                   </TableCell>
 
                   {/* Amount */}
                   <TableCell className="text-right font-bold">
-                    ${tx.amount}
+                    ৳{tx.amount}
                   </TableCell>
                 </TableRow>
               ))
@@ -98,6 +104,7 @@ const History = () => {
         </Table>
       </div>
 
+      {/* Pagination */}
       {totalPage > 1 && (
         <div className="flex justify-end mt-4">
           <Pagination>
